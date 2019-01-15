@@ -115,10 +115,46 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   /*********************************************************************************/
-  /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
-  it("should find the largest prime factor of a composite number", function () {
+  /* EXTRA CREDIT */
   
+  //Largest Prime Factor of a Composite Number
+  //Composite number: positive integer that can be formed by multiplying two smaller positive integers
+
+  it("should find the largest prime factor of a composite number (imperative)", function () {
+    
+    function isPrimeNumber(number) {
+      var isPrime = true;
+      for (var divisor = 2; divisor < number; divisor++) {
+        if (number % divisor === 0) {
+          isPrime = false;
+        }
+      }
+      return isPrime;
+    };
+
+    function listAllFactors(compositeNumber) {
+      var factors = [];
+      for ( var number = 2; number < compositeNumber; number++ ) {
+        if (compositeNumber % number === 0) {
+          factors.push(number);
+        }
+      }
+      return factors;
+    };
+
+    function largestPrimeNumberOfAComposite(compositeNumber) {
+      var factors = listAllFactors(compositeNumber);
+      var primeNumbers = [];
+      for (var i = 0; i < factors.length ; i++) {
+        if (isPrimeNumber(factors[i])) {
+          primeNumbers.push(factors[i]);
+        }
+      }
+      return primeNumbers.length > 1 ? Math.max(...primeNumbers) : "not found";
+    };
+
+    expect(largestPrimeNumberOfAComposite(56)).toBe(7);
+    expect(largestPrimeNumberOfAComposite(13)).toBe("not found");
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
@@ -137,5 +173,5 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
+  
 });
